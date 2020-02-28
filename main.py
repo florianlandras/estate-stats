@@ -14,7 +14,7 @@ from matplotlib.backends.backend_pdf import PdfPages
 
 # import our fonctions
 from postProcess.getOrpi import dataJson
-from analysis.figPricePerSquareMeter import DataFrameFig
+from analysis.figPricePerSquareMeter import dataFrameFig
 
 # Orpi informations ------------------------
 
@@ -40,4 +40,4 @@ dfMaison = df.loc[df['type'] == 'maison']
 ecartType = math.sqrt(dfAppart['pricePerSquareMeter'].var())
 
 # affichage 
-DataFrameFig(dfAppart['pricePerSquareMeter'], dfMaison['pricePerSquareMeter'])
+dataFrameFig(dfAppart['pricePerSquareMeter'], dfMaison['pricePerSquareMeter'])

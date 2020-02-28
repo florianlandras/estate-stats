@@ -2,7 +2,7 @@ import seaborn as sns
 import pandas as pd
 import matplotlib.pyplot as plt
 
-def DataFrameFig(*args):
+def dataFrameFig(*args):
 
     """
     In : DataFrame ex : dfAppart["pricePerSquareMeter"]
