@@ -10,6 +10,7 @@ from analysis.figPricePerSquareMeter import dataFrameFig
 # Orpi informations ------------------------
 
 # Dictionnaire clés/valeurs adapté en fonction du site.
+# TODO normalize user input in a dictionary
 dictionnaire = {
     "realEstateTypes[0]":"appartement",
     "locations[0][value]":"hyeres",
