@@ -12,7 +12,7 @@ def dataFrameFig(*args):
     """
 
     for dataFrame in args:
-        nbrOfData = dataFrame.describe()
+        nbrOfData = dataFrame.describe() #get the DF info to get number of element
         sns.distplot(dataFrame, label = ("# of data : " + str(int(nbrOfData["count"]))))
 
     plt.legend()
