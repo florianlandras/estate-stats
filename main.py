@@ -12,8 +12,10 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from matplotlib.backends.backend_pdf import PdfPages
 
-#lol
+# import our fonctions
+from postProcess.getOrpi import dataJson
 
+# Orpi informations ------------------------
 
 # Dictionnaire clés/valeurs adapté en fonction du site.
 dictionnaire = {
@@ -23,27 +25,11 @@ dictionnaire = {
     "realEstateTypes[1]":"maison"
     
 }
+#-----------------------------------
 
-baseUrl = 'https://www.orpi.com/recherche/buy?'
-maQuery = urlencode(dictionnaire)
-url = baseUrl + maQuery
-print(url)
+monJson = dataJson(dictionnaire)
 
-html = request.urlopen(url)
 
-soup = BeautifulSoup(html , 'html.parser')
-test = soup.find_all("div", class_="o-container")
-
-# cibler le json dans le html qui est dans un attribut de Div et le mettre dans un container
-jsonContainer = soup.find_all("div",attrs={"data-result" : True})
-
-# charger le json avec la library standard json et le mettre dans monJson
-# jsoncontainer est un array, a cause du soup.find_all
-# nous savons qu'il existe qu'un seul element, donc jsoncontainer[0] contient l'element
-# le json est contenu dans la valeur de l'attribut data-result ( Le data-result est la clé de la valeur du json )
-# Donc on accede a la valeur avec jsoncontainer[0][data-result]
-
-monJson = json.loads(jsonContainer[0]["data-result"])
 
 df = pd.DataFrame(monJson["items"])
 
