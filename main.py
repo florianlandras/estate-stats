@@ -29,8 +29,6 @@ dictionnaire = {
 
 monJson = dataJson(dictionnaire)
 
-
-
 df = pd.DataFrame(monJson["items"])
 
 dfAppart = df.loc[df['type'] == 'appartement']
@@ -52,6 +50,3 @@ sns.distplot(dfAppart['pricePerSquareMeter'], label = ('appart ' + str(int(nbrAp
 sns.distplot(dfMaison['pricePerSquareMeter'], label = ('maison ' + str(int(nbrMaison['count']))) )
 plt.legend()
 plt.show()
-
-
-#test comment for commit
