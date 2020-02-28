@@ -1,2 +1,2 @@
 # estate-stats
- Simple progr to evaluate the estate market prices
+ Simple program to evaluate the estate market prices
