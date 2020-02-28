@@ -1,16 +1,6 @@
-
-#import post process
-
-from urllib import request
-from urllib.parse import urlencode
-from bs4 import BeautifulSoup
-import json
 #import process
 import pandas as pd
 import math
-import matplotlib.pyplot as plt
-import seaborn as sns
-from matplotlib.backends.backend_pdf import PdfPages
 
 # import our fonctions
 from postProcess.getOrpi import dataJson
