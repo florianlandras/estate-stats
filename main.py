@@ -1,11 +1,10 @@
 #import process
+import pandas as pd
 import math
 
 # import our fonctions
 from postProcess.getOrpi import dataJson
-from process.processOrpi import jsonToDf
 from analysis.figPricePerSquareMeter import dataFrameFig
-
 
 # Orpi informations ------------------------
 
@@ -19,13 +18,9 @@ dictionnaire = {
 }
 #-----------------------------------
 
-#Post process Orpi------------------
 monJson = dataJson(dictionnaire)
-#-----------------------------------
 
-
-#Process Orpi-----------------------
-df = jsonToDf(monJson["items"])
+df = pd.DataFrame(monJson["items"])
 
 dfAppart = df.loc[df['type'] == 'appartement']
 dfAppart['pricePerSquareMeter'].mean()
@@ -33,10 +28,6 @@ dfAppart['pricePerSquareMeter'].mean()
 dfMaison = df.loc[df['type'] == 'maison']
 # ecart type
 ecartType = math.sqrt(dfAppart['pricePerSquareMeter'].var())
-#-----------------------------------
 
-
-#Analysis Orpi----------------------
 # affichage 
 dataFrameFig(dfAppart['pricePerSquareMeter'], dfMaison['pricePerSquareMeter'])
-#-----------------------------------
