@@ -20,7 +20,7 @@ def scrapping (dictionnaire) :
     + locations separated by ","
         locations : nice-06088,paris-75000/
 
-    + "?"
+    + "?sort=b.dateMandat&direction=desc&"
 
     + Query:
         Query key/value for citya:
@@ -40,8 +40,14 @@ def scrapping (dictionnaire) :
 
     baseUrl = "https://www.citya.com/annonces/vente/appartement,maison/"
 
-    url = baseUrl 
+    url = baseUrl + dictionnaire["ville"] + "?sort=b.dateMandat&direction=desc&" #TODO Better url construction
 
+    del dictionnaire["ville"] #Now delete key pair "ville" to encode query words
+    maQuery = urlencode(dictionnaire)
+
+    url = url + maQuery #Now add encoded Query to url
+
+    print(url)
     html = request.urlopen(url)
 
 
@@ -49,7 +55,8 @@ def scrapping (dictionnaire) :
 
 
 if __name__ == '__main__':
-    dictionnaire = {
+    dictionnaire = {          #TODO Need to normalize user input between each post process scrapping
+        "ville":"nice-06088", #FIXME The name of the city need to be exact to be processed or other query will be ignored
         "prixMin":"0",
         "prixMax":"100000",
         "nbrePiecesMin":"0",
@@ -57,5 +64,5 @@ if __name__ == '__main__':
         "surfaceMin":"0",
         "surfaceMax":"111",      
     }
-    scrapping(dictionnaire)  # Put the a call to the main function in the file.    
+    scrapping(dictionnaire)    
         
