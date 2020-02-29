@@ -1,15 +1,10 @@
-
-from urllib import request
 from urllib.parse import urlencode
-from bs4 import BeautifulSoup
-import json
 
-
-def scrapping (dictionnaire) :
+def get (dictionnaire) :
 
     """
     In : dictionary with query words
-    Out: Json with all data
+    Out: Url string
 
 
     Base Url : https://www.citya.com/annonces/vente/
@@ -47,10 +42,7 @@ def scrapping (dictionnaire) :
 
     url = url + maQuery #Now add encoded Query to url
 
-    print(url)
-    html = request.urlopen(url)
-
-
+    return url
 
 
 
@@ -64,5 +56,5 @@ if __name__ == '__main__':
         "surfaceMin":"0",
         "surfaceMax":"111",      
     }
-    scrapping(dictionnaire)    
+    print(get(dictionnaire))    
         
