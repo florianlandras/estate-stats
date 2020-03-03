@@ -2,8 +2,8 @@
 import math
 
 # import our fonctions
-from postProcess.getOrpi import dataJson
-from process.processOrpi import jsonToDf
+from postProcess.orpi.getOrpi import dataJson
+from process.orpi.processOrpi import jsonToDf
 from analysis.figPricePerSquareMeter import dataFrameFig
 
 
