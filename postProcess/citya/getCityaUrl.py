@@ -1,4 +1,9 @@
+
 from urllib.parse import urlencode
+from urllib import request
+from bs4 import BeautifulSoup
+import re
+import pandas as pd
 
 def get (dictionnaire) :
 
@@ -47,14 +52,28 @@ def get (dictionnaire) :
 
 
 if __name__ == '__main__':
-    dictionnaire = {          #TODO Need to normalize user input between each post process scrapping
-        "ville":"nice-06088", #FIXME The name of the city need to be exact to be processed or other query will be ignored
+    
+    ville = 'caca'        #TODO integrer la fonction de verification des villes dans un fichier a part
+    df=pd.read_csv('villes_france.csv')
+    df.info
+    dfVille = df['Ozan']
+    dfVille = dfVille.str.lower()
+    if dfVille.str.contains(ville).any() :
+        dictionnaire = {          #TODO Need to normalize user input between each post process scrapping
+        "ville":ville,        
         "prixMin":"0",
         "prixMax":"100000",
         "nbrePiecesMin":"0",
         "nbrePiecesMax":"10",
         "surfaceMin":"0",
-        "surfaceMax":"111",      
-    }
-    print(get(dictionnaire))    
-        
+        "surfaceMax":"111",  
+        }
+        print(get(dictionnaire)) 
+
+    else :
+        print("This city don't exist")
+    
+
+
+
+    

@@ -54,12 +54,6 @@ def getDf (url) :
         "price/m2": pricePerSquareMeterArray, #TODO normalize df columns names
     }
     return  pd.DataFrame(data)
-
-
-    
-
-
-
     
 
 
