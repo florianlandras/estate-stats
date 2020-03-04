@@ -40,8 +40,8 @@ def getDf (url):
     for i in range(len(priceArray)):
         pricePerSquareMeterArray.append(float(priceArray[i]/areaArray[i]))
 
-    # Create the pandas DataFrame #TODO normalize name of column in dataframe
-    data = {
+   # Create the pandas DataFrame #TODO normalize name of column in dataframe
+    data = { 
         "area":areaArray,
         "nbrRoom": nbrRoomArray,
         "price": priceArray,
