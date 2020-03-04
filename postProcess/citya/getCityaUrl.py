@@ -35,7 +35,7 @@ def get (dictionnaire) :
 
     baseUrl = "https://www.citya.com/annonces/vente/appartement,maison/"
 
-    url = baseUrl + dictionnaire["ville"] + "?sort=b.dateMandat&direction=desc&" #TODO Better url construction
+    url = baseUrl + "?sort=b.dateMandat&direction=desc&" + dictionnaire["ville"]  #TODO Better url construction
 
     del dictionnaire["ville"] #Now delete key pair "ville" to encode query words
     maQuery = urlencode(dictionnaire)

@@ -24,7 +24,7 @@ def get (dictionnaire) :
     urlCent21 = baseUrl + txtBien + ville
     return urlCent21
     
-    
+
 
 #https://www.century21.fr/annonces/achat-maison-appartement/v-toulon/alentours-15/s-0-/st-0-/b-0-/page-1/
 if __name__ == '__main__':
@@ -36,5 +36,7 @@ if __name__ == '__main__':
 
     }
     print(get(dictionnaire))
+
+    
     
     
