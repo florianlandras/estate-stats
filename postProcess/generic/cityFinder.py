@@ -14,7 +14,7 @@ def cityaFormat(ville) :
     ville = 'Paris'
     ville = ville.lower()
 
-    if df['Ville'].str.contains(Ville).any() :
+    if df['Ville'].str.contains(ville).any() :
         a = df.loc[df['Ville'] == ville]
         ville = a['Ville+Code'].values[0]
         ville
@@ -22,4 +22,8 @@ def cityaFormat(ville) :
         print("Ville n'existe pas")
     
     return ville
-        
+
+
+if __name__ == '__main__':
+    ville = "Paris"
+    print(cityaFormat(ville))
