@@ -13,5 +13,18 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>NASA Picture of the day</ion-card-subtitle>
+      <ion-card-title>{{apodTitle}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <img src={{apodImageUrl}} />
+      {{apodExplanation}}
+      <ion-icon slot="start" name="information-circle-outline"></ion-icon>
+      {{apodDate}}
+    </ion-card-content>
+  </ion-card>
+  
 </ion-content>
