@@ -1,0 +1,88 @@
+<mxfile host="65bd71144e" modified="2020-10-26T19:34:59.268Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.50.1 Chrome/83.0.4103.122 Electron/9.2.1 Safari/537.36" etag="Qs4eAWY271dl5ca3IXzO" version="13.6.5">
+    <diagram id="-tQI89GpNy4sc_crlYdO" name="Page-1">
+        <mxGraphModel dx="886" dy="475" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="31" value="" style="whiteSpace=wrap;html=1;dashed=1;rounded=1;glass=0;arcSize=14;fillColor=none;strokeColor=#3333FF;" vertex="1" parent="1">
+                    <mxGeometry x="140" y="340" width="170" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="" style="whiteSpace=wrap;html=1;dashed=1;rounded=1;glass=0;arcSize=14;fillColor=none;strokeColor=#3333FF;" vertex="1" parent="1">
+                    <mxGeometry x="14" y="60" width="800" height="450" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="Docker compose" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;glass=0;dashed=1;" vertex="1" parent="1">
+                    <mxGeometry x="359" y="60" width="110" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="" style="whiteSpace=wrap;html=1;dashed=1;rounded=1;glass=0;arcSize=14;fillColor=none;strokeColor=#3333FF;" vertex="1" parent="1">
+                    <mxGeometry x="59" y="160" width="331" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="Docker service : BACKEND" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;glass=0;dashed=1;" vertex="1" parent="1">
+                    <mxGeometry x="135" y="160" width="160" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="REST API&lt;br&gt;python Flask" style="whiteSpace=wrap;html=1;rounded=1;glass=0;dashed=1;" vertex="1" parent="1">
+                    <mxGeometry x="240" y="215" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="FireBase ?&lt;br&gt;gestion des utilisateurs" style="whiteSpace=wrap;html=1;rounded=1;glass=0;dashed=1;gradientColor=none;strokeColor=#FFB366;" vertex="1" parent="1">
+                    <mxGeometry x="590" y="540" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="" style="group;" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="520" y="200" width="275" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="" style="group" vertex="1" connectable="0" parent="5">
+                    <mxGeometry x="-80" y="-47.620000000000005" width="354.99" height="238.09619047619046" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="" style="whiteSpace=wrap;html=1;dashed=1;rounded=1;glass=0;arcSize=14;fillColor=none;strokeColor=#3333FF;" vertex="1" parent="22">
+                    <mxGeometry y="0.0009523809523841464" width="354.99" height="238.09523809523807" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="Docker service : FRONTEND" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;glass=0;dashed=1;" vertex="1" parent="22">
+                    <mxGeometry x="105" width="170" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;startArrow=classic;startFill=1;" edge="1" parent="22" source="8" target="8">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="" style="whiteSpace=wrap;html=1;dashed=1;fillColor=none;align=left;rounded=1;horizontal=1;arcSize=6;shadow=0;sketch=0;" parent="22" vertex="1">
+                    <mxGeometry x="140" y="27.620000000000005" width="100" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;startArrow=classic;startFill=1;" edge="1" parent="22" source="2" target="2">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="" style="shape=image;imageAspect=0;aspect=fixed;verticalLabelPosition=bottom;verticalAlign=top;rounded=1;shadow=0;dashed=1;sketch=0;fillColor=none;image=https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ionic-512.png;" parent="22" vertex="1">
+                    <mxGeometry x="167.26999999999998" y="67.61904761904762" width="45.46285714285714" height="45.46285714285714" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="&lt;font face=&quot;Lucida Console&quot;&gt;Ionic app&lt;/font&gt;" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;shadow=0;dashed=1;sketch=0;" parent="22" vertex="1">
+                    <mxGeometry x="150" y="37.62444444444445" width="80" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" value="Server prod Ionic &lt;br&gt;???" style="whiteSpace=wrap;html=1;rounded=1;glass=0;dashed=1;fillColor=#2a2a2a;gradientColor=none;strokeColor=#FF3333;" vertex="1" parent="22">
+                    <mxGeometry x="20" y="157.62" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=classic;startFill=1;" edge="1" parent="1" source="24" target="19">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="Python&lt;br&gt;estate-stats" style="whiteSpace=wrap;html=1;rounded=1;glass=0;dashed=1;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="212.5" width="110" height="85" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;startFill=1;" edge="1" parent="1" source="28" target="19">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="MYSQL" style="whiteSpace=wrap;html=1;rounded=1;glass=0;dashed=1;fillColor=#2a2a2a;gradientColor=none;strokeColor=#80FF00;" vertex="1" parent="1">
+                    <mxGeometry x="164.5" y="380" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;startArrow=classic;startFill=1;" edge="1" parent="1" source="12" target="12">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="Docker service : DB" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;glass=0;dashed=1;" vertex="1" parent="1">
+                    <mxGeometry x="165" y="440" width="120" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;startArrow=classic;startFill=1;" edge="1" parent="1" source="31" target="31">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;startArrow=classic;startFill=1;" edge="1" parent="1" source="2" target="19">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;startArrow=classic;startFill=1;" edge="1" parent="1" source="2" target="20">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
