@@ -1,43 +1,50 @@
-#import process
-import math
+import flask
+import json
+from postProcess.similarData import getdef
+from postProcess.findSimilar import newUrl
+import pandas
 
-# import our fonctions
-from postProcess.orpi.getOrpi import dataJson
-from process.orpi.processOrpi import jsonToDf
-from analysis.figPricePerSquareMeter import dataFrameFig
+app = flask.Flask(__name__)
 
-
-# Orpi informations ------------------------
-
-# Dictionnaire clés/valeurs adapté en fonction du site.
-# TODO normalize user input in a dictionary
-dictionnaire = {
-    "realEstateTypes[0]":"appartement",
-    "locations[0][value]":"hyeres",
-    #"locations[0][label]":"Nice (06000) - Ville",
-    "realEstateTypes[1]":"maison"
-    
-}
-#-----------------------------------
-
-#Post process Orpi------------------
-monJson = dataJson(dictionnaire)
-#-----------------------------------
+@app.route("/")
+def index():
+    return "Hello, you are on backend flask server"
 
 
-#Process Orpi-----------------------
-df = jsonToDf(monJson["items"])
+testDict = [
+    {
+        'id': 0,
+        'data': "test1"
+    },
+    {
+        'id': 1,
+        'data': 'test2' 
+    }
+]
 
-dfAppart = df.loc[df['type'] == 'appartement']
-dfAppart['pricePerSquareMeter'].mean()
+@app.route('/api/test', methods=['GET'])
+def test():
+    # https://programminghistorian.org/en/lessons/creating-apis-with-python-and-flask
+    #get key from url
 
-dfMaison = df.loc[df['type'] == 'maison']
-# ecart type
-ecartType = math.sqrt(dfAppart['pricePerSquareMeter'].var())
-#-----------------------------------
+    argList = []
+    valueList = []
+
+    for arg in flask.request.args:
+        argList.append(arg) #access to all key
+        valueList.append(flask.request.args[arg]) #access to all value
+
+    return flask.jsonify(dict(zip(argList,valueList)))
+
+@app.route('/api/getData/')
+def data():
+
+    baseUrl = 'https://www.hemnet.se/salda/'
+    city = 'soderkopings-kommun'
+    urlStr = newUrl(baseUrl+city)
+    df = getdef(urlStr)
+    return flask.jsonify(df.to_dict(orient='index'))
 
 
-#Analysis Orpi----------------------
-# affichage 
-dataFrameFig(dfAppart['pricePerSquareMeter'], dfMaison['pricePerSquareMeter'])
-#-----------------------------------
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=80, debug=True)

@@ -1,0 +1,4 @@
+# lire url 
+
+def parseUrl () :
+    

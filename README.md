@@ -1,8 +1,8 @@
 # estate-stats
  Simple program to evaluate the estate market prices
 
-# Project architecture
 
+<<<<<<< HEAD
 Backend in python with Flask rest API
 
 Front end IONIC 
@@ -17,3 +17,5 @@ Front end IONIC
         "meanHousePrice":"number",
         etc ....
     }` 
+=======
+>>>>>>> master
