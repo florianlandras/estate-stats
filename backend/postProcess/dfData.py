@@ -12,24 +12,29 @@ def dfData(url) :
     html = requests.get(url)
     soup = BeautifulSoup(html.text , 'html.parser')
 
-    # Get Price
-
-    price = soup.find('p', class_ = "property-info__price qa-property-price" ).text
-    price = price.split()
-    # join, entre guillement sepâration avec le caractere que l'on veut, et entre crochet ce qu'on veut omettre.
-    price = "".join(price[:-1])
-    price = int(price)
-
+    
+    tableArray =[]
     # Get size
+    table = soup.find('div', class_ = "property-attributes-table" )
+    table = table.find_all('div')
+    for line in table : 
+        tableArray.append(line.text.replace(u'\xa0', u'').split("\n"))
+    #print(line.text)
+    tArray = []
+    for elem in tableArray :
+        elem = list(filter(None, elem))
+        tArray.append(elem)
 
-    # Get Nbr de chambre
+    tDict = {}
+    for x in tArray:
+        tDict[x[0]] = x[1:]
 
-    # Get size terrain
+    df = pd.DataFrame([tDict])
+    df = df[['Antal rum', 'Boarea', 'Tomtarea', 'Byggår', 'Driftkostnad']]
 
-    # Get annee de construction
-
-    # charges
-    return price
+    df.to_csv(r'/Users/florianlandras/Documents/GitHub/estate-stats/backend/postProcess/\dataToCompare.csv', index = False)
+    
+    return df
 
 if __name__ == "__main__":
     url = 'https://www.hemnet.se/bostad/villa-4rum-slatbaken-husbyvik-soderkopings-kommun-husaby-strand-16-17083596'
