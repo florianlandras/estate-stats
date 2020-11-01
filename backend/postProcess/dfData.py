@@ -30,13 +30,14 @@ def dfData(url) :
     for x in tArray:
         tDict[x[0]] = x[1]
     
-    table = soup.find('p', class_ = "property-info__price qa-property-price" )
-
+    
+    price = soup.find('p', class_ = "property-info__price qa-property-price" ).text
+    price = re.sub("\D","",price)
     
 
     df = pd.DataFrame([tDict])
     df = df[['Antal rum', 'Boarea', 'Tomtarea', 'Byggår', 'Driftkostnad']]
-
+    df['pris'] = int(price)
     df.to_csv(r'/Users/florianlandras/Documents/GitHub/estate-stats/backend/postProcess/\dataToCompare.csv', index = False)
     
     return df
