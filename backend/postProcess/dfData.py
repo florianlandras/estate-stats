@@ -26,8 +26,13 @@ def dfData(url) :
         tArray.append(elem)
 
     tDict = {}
+    tArray.pop()
     for x in tArray:
-        tDict[x[0]] = x[1:]
+        tDict[x[0]] = x[1]
+    
+    table = soup.find('p', class_ = "property-info__price qa-property-price" )
+
+    
 
     df = pd.DataFrame([tDict])
     df = df[['Antal rum', 'Boarea', 'Tomtarea', 'Byggår', 'Driftkostnad']]
