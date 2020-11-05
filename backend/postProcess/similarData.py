@@ -6,6 +6,7 @@ import re
 import pandas as pd
 from urllib import request
 import numpy as np
+import df
 
 def getdef(url) :
     """[summary]
