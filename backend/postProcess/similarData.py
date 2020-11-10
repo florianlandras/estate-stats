@@ -6,9 +6,9 @@ import re
 import pandas as pd
 from urllib import request
 import numpy as np
-import df
 
-def getdef(url) :
+
+def getTrain(url) :
     """[summary]
 
     Args:
@@ -21,71 +21,88 @@ def getdef(url) :
     areaArray = []
     nbrRoomArray = []
     priceArray = []
-    priceFinalArray = []
+    slutArray = []
     pricePerSquareMeterArray = []
     adressArray = []
+    tomtArray = []
 
 
-# a / area + nbr of room
-    a = soup.find_all('div', class_ = "sold-property-listing__subheading sold-property-listing--left" )
+    # a / Tomt
+    a = soup.find_all('div', class_ = "sold-property-listing__land-area sold-property-listing--left")
     for elem in a :
         temp1 = re.findall(r"[-+]?\d*\.\d+|\d+", elem.get_text())
-        areaArray.append(temp1)
-    
-    df = pd.DataFrame(data=areaArray, columns=["Area","Rooms", "Rooms2"])
+        tomtArray.append(temp1)
+      
+    df = pd.DataFrame(data=tomtArray, columns=["1","2"])
     df.replace(to_replace=[None], value=np.nan, inplace=True)
-    df = df.fillna(0)
-    del df['Rooms2']
+    df["Tomt"] = df["1"] + df["2"].fillna('')
+    df = df.drop(df.columns[[0, 1]], axis=1)
 
     
-    # b /adress
-    b = soup.find_all('span', class_ = "item-result-meta-attribute-is-bold item-link" )
-    #b2 / adress city
-    b2 = soup.find_all('span', class_ = "item-link" )
-    
-    # c / final price
-    c = soup.find_all('span', class_ = "sold-property-listing__subheading sold-property-listing--left" )
-    
-    for elem in c :
+
+
+    # Room and size
+
+    b = soup.find_all('div', class_ = "sold-property-listing__subheading sold-property-listing--left")
+    for elem in b :
         temp1 = re.findall(r"[-+]?\d*\.\d+|\d+", elem.get_text())
-        priceFinalArray.append(temp1)
-        
-    df2 = pd.DataFrame(data=priceFinalArray, columns=["1","2", "3"])
+        areaArray.append(temp1)
+
+    df2 = pd.DataFrame(data=areaArray , columns = ['Area', 'Rooms', 'extra'])
     df2.replace(to_replace=[None], value=np.nan, inplace=True)
-    df2 = df2.fillna("")
-    df2["Final Price"] = df2["1"] + df2["2"] + df2["3"]
-    df["Final Price"] = df2["Final Price"]
-    
-    # d / % difference between market entrance price and final price
-    d = soup.find_all('div', class_ = "sold-property-listing__price-change" )
-    # e / date de la vente
-    e = soup.find_all('div', class_ = "sold-property-listing__sold-date sold-property-listing--left" )
-    #f / pricePerMeterSquare
-    f = soup.find_all('div', class_ = "sold-property-listing__price-per-m2 sold-property-listing--left" )
-    # g/ surface non habitable
-    g = soup.find_all('div', class_ = "sold-property-listing__supplemental-area sold-property-listing--left" )
-    # h/surface du terrain
-    h = soup.find_all('div', class_ = "sold-property-listing__land-area sold-property-listing--left" )
-    # i / type de bien
-    i =  soup.find_all('span', class_ = "hide-element" )
-    #j charge ???
-    j =  soup.find_all('div', class_ = "sold-property-listing__fee" )
-    # k/ lien du bien immobilier pour plus d'infos
-    k = soup.find_all('a', class_ = "item-link-container" )
-    
-    # Convert values to float
-    
-    df["Area"] = df["Area"].astype(float)
-    df["Rooms"] = df["Rooms"].astype(float)
-    df["Final Price"] = df["Final Price"].astype(float)
+    df['Area'] = df2['Area']
+    df['Rooms'] = df2['Rooms']
 
 
+    # SlutPrice
+    b = soup.find_all('span', class_ = "sold-property-listing__subheading sold-property-listing--left")
+    for elem in b :
+        temp1 = re.findall(r"[-+]?\d*\.\d+|\d+", elem.get_text())
+        slutArray.append(temp1)
 
+    df3 = pd.DataFrame(data=slutArray , columns = ['1', '2', '3'])
+    df3.replace(to_replace=[None], value=np.nan, inplace=True)
+    df3['SlutPrice'] = df3['1'] + df3['2'] + df3['3'].fillna('')
+    df['SlutPrice'] = df3['SlutPrice']
+
+    #print(df)
+
+
+    # More infos link :
+    linkArray = []
+    tableArray =[]
+    tArray = []
+    # charges par mois
+    driftArray =[]
+    # surface non comptabilisée.
+    biareaArray =[]
+
+    for elem in soup.find_all('a',class_="item-link-container", href=True): 
+        if elem.text: 
+            linkArray.append(elem['href'])
+    """ 
+    for elem in linkArray :
+        html = requests.get(elem)
+        soup = BeautifulSoup(html.text , 'html.parser')
+        #driftkosnad
+        table = soup.find_all('dd', class_ = "sold-property__attribute-value")
+        for line in table :
+            #temp1 = re.findall(r"[-+]?\d*\.\d+|\d+", line.get_text())
+            #tArray.append(temp1)
+            tArray.append(line.text.replace(u'\xa0', u'').split("\n"))
+    
+         
+        for line in table : 
+            tableArray.append(line.text.replace(u'\xa0', u'').split("\n"))
+            #print(line.text)
+        for i in tableArray :
+            i = list(filter(None, i))
+            tArray.append(i)
+        """
+    #print(tArray)
     return df
 
 if __name__ == "__main__":
-    baseUrl = 'https://www.hemnet.se/salda/'
-    city = 'soderkopings-kommun'
-    url = baseUrl + city
-    df = getdef(url)
+    url =  "https://www.hemnet.se/salda/bostader?housing_form_groups%5B%5D=houses&location_ids%5B%5D=17774"
+    df = getTrain(url)
     print(df)
