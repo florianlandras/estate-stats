@@ -5,7 +5,7 @@ import requests
 import re
 import pandas as pd
 
-def getSimilar(url) :
+def getLink(url) :
 
 
 
@@ -21,12 +21,11 @@ def getSimilar(url) :
 
     link = "https://www.hemnet.se" + link
 
-    print(link)
 
     return link
 
 
 if __name__ == "__main__":
     url = "https://www.hemnet.se/bostad/villa-4rum-slatbaken-husbyvik-soderkopings-kommun-husaby-strand-16-17083596"
-    getSimilar(url)
+    getLink(url)
     

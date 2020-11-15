@@ -43,5 +43,5 @@ def dfData(url) :
     return df
 
 if __name__ == "__main__":
-    url = 'https://www.hemnet.se/bostad/villa-4rum-slatbaken-husbyvik-soderkopings-kommun-husaby-strand-16-17083596'
+    url = 'https://www.hemnet.se/bostad/villa-3rum-snovelstorp-soderkopings-kommun-grenstigen-10-17051696'
     print(dfData(url))
